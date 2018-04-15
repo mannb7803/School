@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Activity/Activity.iml" filepath="$PROJECT_DIR$/Activity/Activity.iml" />
       <module fileurl="file://$PROJECT_DIR$/HW1/HW1.iml" filepath="$PROJECT_DIR$/HW1/HW1.iml" />
       <module fileurl="file://$PROJECT_DIR$/cs141.iml" filepath="$PROJECT_DIR$/cs141.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project -skeleton2/project -skeleton2.iml" filepath="$PROJECT_DIR$/project -skeleton2/project -skeleton2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testing/testing.iml" filepath="$PROJECT_DIR$/testing/testing.iml" />
     </modules>
   </component>
 </project>

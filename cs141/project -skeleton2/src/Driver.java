@@ -1,17 +1,20 @@
  
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
 public class Driver {
-	private static int CURRENTYEAR = 2018;
+	private static final int CURRENTYEAR = 2018;
 	// Add method to read the temps file
 	public static ArrayList<Record> readTemperatureFile() throws IOException
 	{
-		File f1 = new File("files/temps-7lines.dat");
+		//temp file
+		File f1 = new File("project -skeleton2/files/temps-2000s.dat");
 		ArrayList<Record> returnArray= new ArrayList<Record>();
 		Scanner fInput = new Scanner(f1);
 
@@ -43,8 +46,9 @@ public class Driver {
 	// Add method to read the queries file
 	public static void readQuerieFile(ArrayList<Record> recordArray) throws IOException
 	{
-		File f = new File("files/queries.dat");
-		Scanner queriesInput = new Scanner(f);
+		//querie file
+		File q = new File("project -skeleton2/files/queries-2000s.dat");
+		Scanner queriesInput = new Scanner(q);
 		while(queriesInput.hasNext())
 		{
 			int tempStationId = queriesInput.nextInt();
@@ -58,7 +62,6 @@ public class Driver {
 			for(int i =0; i < recordArray.size(); i++)
 			{
 				if (recordArray.get(i).getStationID() != tempStationId) {
-
 				}
 				else
 				{
@@ -74,11 +77,8 @@ public class Driver {
 					{
 						tempCurrentTotalTemperature += x.getTemperature();
 					}
-					else
-					{
-
-					}
 				}
+				System.out.println(tempArray.size()-1);
 				tempCurrentTotalTemperature /= tempArray.size()-1;
 				writeResults(tempStationId, dateLowerbound, dateUperbbound, querieType, tempCurrentTotalTemperature);
 			}
@@ -109,10 +109,33 @@ public class Driver {
 			}
 		}
 	}
-	public static void writeResults(int sID, int lowerYear, int upperYear, String s, double answer)
+	public static void writeResults(int sID, int lowerYear, int upperYear, String s, double answer) throws IOException
 	{
 
-		System.out.println(sID + "   " + lowerYear + "   " + upperYear + "   " + s + "   " + answer);
+		File print = new File("project -skeleton2/files/results.dat");
+		if(!print.exists())
+		{
+			print.createNewFile();
+		}
+		FileWriter fr = new FileWriter(print, true);
+		PrintWriter pr = new PrintWriter(fr);
+		if(answer == 0.0)
+		{
+			pr.println(sID + "   " + lowerYear + "   " + upperYear + "   " + s + "   unknown");
+		}
+		else
+		{
+			if(s.equalsIgnoreCase("mode"))
+			{
+				answer = Math.round(answer);
+				pr.println(sID + "   " + lowerYear + "   " + upperYear + "   " + s + "   " + (int)answer);
+			}
+			else
+			{
+				pr.println(sID + "   " + lowerYear + "   " + upperYear + "   " + s + "   " + (answer));
+			}
+		}
+		pr.close();
 	}
 	// Add method to write to a results.dat file 
 	
