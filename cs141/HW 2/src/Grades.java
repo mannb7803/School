@@ -1,6 +1,7 @@
-/**
- * Created by Ben on 4/11/2018.
- */
+//Ben Mann
+//CS141
+//Assignment 3
+//04/24/18
 public class Grades {
     private int grade;
     private  String assignment;
@@ -17,11 +18,11 @@ public class Grades {
     public void setGrade(int grade) {
         this.grade = grade;
     }
-    public String toString() {
-        String returnString = " Assignment: " + this.getAssignment() + " Grade: " +  this.getGrade() + " ";
-        return returnString;
-    }
     public void setAssignment(String assignment) {
         this.assignment = assignment;
+    }
+    public String toString() {
+        String returnString = ", "+ this.getAssignment() + ", " +  this.getGrade();
+        return returnString;
     }
 }
