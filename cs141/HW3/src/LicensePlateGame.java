@@ -27,6 +27,7 @@ public class LicensePlateGame {
         {
             returnArray.add(inputFileScanner.nextLine());
         }
+        System.out.println(returnArray.get(returnArray.size()-1));
         return returnArray;
     }
     public static void runGame(ArrayList<String> words)
@@ -49,15 +50,18 @@ public class LicensePlateGame {
             {
                 //creates temp string tempString equal to current aWord
                 String tempString = aWord;
-                //tests
+                //tests to see if  tempString has the first of the 3 letters
                 if(tempString.contains(userInputArray[0]))
                 {
+                    //sets tempString  to a new string without the previous letter as it exists
                     tempString = tempString.substring(0, tempString.indexOf(userInputArray[0])) + tempString.substring(tempString.indexOf(userInputArray[0])+1);
                     if(tempString.contains(userInputArray[1]))
                     {
+                        //same as previous if statement
                         tempString = tempString.substring(0, tempString.indexOf(userInputArray[1])) + tempString.substring(tempString.indexOf(userInputArray[1])+1);
                         if(tempString.contains(userInputArray[2]))
                         {
+                            //checks to see order of the letters occurring
                             if(aWord.indexOf(userInputArray[0]) <= aWord.indexOf(userInputArray[1]) && aWord.indexOf(userInputArray[1]) <= aWord.indexOf(userInputArray[2]))
                             {
                                 System.out.print(aWord + " ");
@@ -68,6 +72,7 @@ public class LicensePlateGame {
             }
         }
         System.out.println();
+        //calls runGame with the words arrayList so that it continues to run
         runGame(words);
     }
 }
